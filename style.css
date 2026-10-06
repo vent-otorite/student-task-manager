@@ -1,1 +1,199 @@
  
+:root {
+  color-scheme: dark;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --bg: #080708;
+  --bg-soft: #111113;
+  --surface: #171519;
+  --surface-strong: #211a1d;
+
+  --text: #f4eddf;
+  --text-muted: #bfb5a4;
+  --heading: #fff9ec;
+
+  --line: rgba(244, 237, 223, 0.12);
+  --line-strong: rgba(212, 184, 123, 0.32);
+
+  --highlight: rgba(255, 250, 238, 0.16);
+  --shade: rgba(0, 0, 0, 0.3);
+
+  --accent: #6c1824;
+  --accent-strong: #8a2634;
+  --gold: #b49a63;
+  --gold-strong: #d6c08a;
+
+  --button-text: #fff8ea;
+
+  --shadow-soft: 0 18px 56px rgba(0, 0, 0, 0.28);
+  --shadow-strong: 0 28px 90px rgba(0, 0, 0, 0.42);
+
+  --gradient-page:
+    radial-gradient(circle at 12% 10%, rgba(108, 24, 36, 0.26), transparent 28rem),
+    radial-gradient(circle at 88% 8%, rgba(180, 154, 99, 0.13), transparent 24rem),
+    radial-gradient(circle at 48% 100%, rgba(68, 17, 26, 0.32), transparent 34rem),
+    linear-gradient(135deg, var(--bg), var(--bg-soft));
+
+  --gradient-accent:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      color-mix(in srgb, var(--gold) 38%, var(--accent-strong))
+    );
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 4rem 1.5rem;
+
+  font-family: var(--font-body);
+  color: var(--text);
+
+  background: var(--gradient-page);
+  background-attachment: fixed;
+
+  min-height: 100vh;
+}
+
+/* Heading */
+h1 {
+  margin: 0 0 2rem;
+
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+
+  color: var(--heading);
+}
+
+/* Input & Textarea */
+input,
+textarea {
+  width: 100%;
+  max-width: 700px;
+
+  padding: 1rem 1.1rem;
+
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+
+  background: color-mix(
+    in srgb,
+    var(--surface-strong) 76%,
+    transparent
+  );
+
+  color: var(--text);
+
+  font: inherit;
+
+  outline: none;
+
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    inset 0 -1px 0 var(--shade);
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+input {
+  min-height: 3.25rem;
+}
+
+textarea {
+  min-height: 10rem;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: color-mix(
+    in srgb,
+    var(--text-muted) 72%,
+    transparent
+  );
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--line-strong);
+
+  box-shadow:
+    0 0 0 4px
+      color-mix(in srgb, var(--gold) 18%, transparent),
+    inset 0 1px 0 var(--highlight),
+    inset 0 -1px 0 var(--shade);
+}
+
+/* Button */
+button {
+  min-height: 3.25rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.85rem 1.5rem;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  color: var(--button-text);
+  background: var(--gradient-accent);
+
+  font: inherit;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 1px 0 var(--highlight),
+    inset 0 -1px 0 var(--shade);
+
+  transition:
+    transform 360ms cubic-bezier(.2, .7, .2, 1),
+    border-color 360ms cubic-bezier(.2, .7, .2, 1),
+    box-shadow 360ms cubic-bezier(.2, .7, .2, 1);
+}
+
+button:hover,
+button:focus-visible {
+  transform: translateY(-3px);
+
+  border-color: var(--line-strong);
+
+  box-shadow:
+    var(--shadow-strong),
+    inset 0 1px 0 var(--highlight),
+    inset 0 -1px 0 var(--shade);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+/* Keyboard accessibility */
+:focus-visible {
+  outline: 3px solid rgba(214, 192, 138, 0.58);
+  outline-offset: 4px;
+}
