@@ -1,2 +1,1 @@
-
-Student Task Manager helps students organize, search, and complete their tasks.
+Student Task Manager is a simple web application for managing student tasks. It helps students organize, search, and complete their tasks.
